@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       workflow-name:
-        description: 'Nombre dDDld workflow a invocar'
+        description: 'Nombre dDDDDld workflow a invocar'
         required: true
 
 jobs:
