@@ -1,0 +1,12 @@
+name: Workflow Hijo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1_hijo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Paso 1 en el Workflow Hijo
+        run: echo "Hola desde el paso 1 del flujo de trabajo hijo"
+      # Agrega más pasos si es necesario
