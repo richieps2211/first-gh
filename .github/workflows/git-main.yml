@@ -21,7 +21,8 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Asegúrate de tener un PAT con los permisos necesarios
+          token: ${{ secrets.PAT }}  # Asegúrate de tener un PAT con los permisos necesarios
           repository: ${{ github.repository_owner }}/Workflow-Hijo
           event-type: workflow_dispatch
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
