@@ -12,8 +12,7 @@ jobs:
       - name: Paso 1
         run: echo "Hola desde el paso 1"
       - name: Invocar Workflow Hijo
-        uses: peter-evans/workflow-dispatch@v2
+        uses: peter-evans/workflow-dispatch@v1.2.0  # Check the correct version
         with:
           workflow: Workflow-Hijo
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Puedes añadir inputs si el flujo de trabajo hijo los necesit
