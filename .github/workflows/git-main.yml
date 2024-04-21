@@ -7,7 +7,10 @@ on:
   workflow_dispatch:
     inputs:
       workflow-name:
-        description: 'Nombre dDDDDld workflow a invocar'
+        description: 'Nombre del workflow a invocar'
+        required: true
+      job-id:
+        description: 'ID del job a ejecutar en el workflow hijo'
         required: true
 
 jobs:
@@ -22,7 +25,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}  # Asegúrate de tener un PAT con los permisos necesarios
-          repository: ${{ github.repository_owner }}/first-gh
-          event-type: workflow_dispatch
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-
+          repository: ${{ github.repository_owner }}/Workflow-Hijo
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2" }'
