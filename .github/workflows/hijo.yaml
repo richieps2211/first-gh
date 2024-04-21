@@ -1,24 +1,16 @@
-name: Hijo
+name: Workflow Hijo
 
 on:
-  repository_dispatch:
-    types: [workflow_dispatch]
-    inputs:
-      ref:
-        description: 'Branch a ejecutar'
-        required: true
-      job-id:
-        description: 'ID del job a ejecutar'
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Paso 1 en Workflow Hijo
-        run: echo "Hola desde el paso 1 en Workflow Hijo"
   job2:
     runs-on: ubuntu-latest
     steps:
-      - name: Paso 2 en Workflow Hijo
-        run: echo "Hola desde el paso 2 en Workflow Hijo"
+      - name: Paso 1 en Workflow Hijo
+        run: |
+          echo "Hola desde el paso 1 en Workflow Hijo"
+          echo "BANCO: ${{ github.event.inputs.banco }}"
+          echo "PAIS: ${{ github.event.inputs.pais }}"
