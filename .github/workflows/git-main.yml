@@ -22,7 +22,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}  # Asegúrate de tener un PAT con los permisos necesarios
-          repository: ${{ github.repository_owner }}/hijo
+          repository: ${{ github.repository_owner }}/first-gh
           event-type: workflow_dispatch
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
