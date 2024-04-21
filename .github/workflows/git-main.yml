@@ -16,24 +16,31 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    outputs:
+      BANCO: ${{ steps.set_output.outputs.BANCO }}
+      PAIS: ${{ steps.set_output.outputs.PAIS }}
     steps:
-      - name: Obtener PAT del Repositorio Central
-        uses: actions/checkout@v2
-        with:
-          repository: "${{ github.repository_owner }}/demoBCPDev"
-          path: central-repo
-          token: "${{ github.token }}"
-
       - name: Paso 1
         run: echo "Hola desde el paso 1"
 
+      - name: Set Output
+        id: set_output
+        run: |
+          echo "BANCO=banco" >> $GITHUB_ENV
+          echo "PAIS=peru" >> $GITHUB_ENV
+
       - name: Invocar Workflow Hijo
         uses: actions/checkout@v2
-        
+        with:
+          repository: "${{ github.repository_owner }}/first-gh"
+          token: "${{ secrets.PAT }}"
+          ref: main
+          path: child-repo
+
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: "${{ secrets.PAT }}"  # Utiliza el token heredado
+          token: "${{ secrets.PAT }}"
           repository: "${{ github.repository_owner }}/first-gh"
           event-type: workflow_dispatch
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2" }'
