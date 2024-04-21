@@ -22,7 +22,7 @@ jobs:
         with:
           repository: "${{ github.repository_owner }}/demoBCPDev"
           path: central-repo
-          token: "${{ secrets.PAT_FROM_CENTRAL_REPO }}"
+          token: "${{ secrets.BCP_FRASE }}"
 
       - name: Paso 1
         run: echo "Hola desde el paso 1"
@@ -33,7 +33,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.PAT_FROM_CENTRAL_REPO }}  # Utiliza el PAT del repositorio central
+          token: ${{ secrets.BCP_FRASE }}  # Utiliza el PAT del repositorio central
           repository: ${{ github.repository_owner }}/first-gh
           event-type: workflow_dispatch
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2" }'
