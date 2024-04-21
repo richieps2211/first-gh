@@ -20,9 +20,9 @@ jobs:
       - name: Obtener PAT del Repositorio Central
         uses: actions/checkout@v2
         with:
-          repository: ${{ github.repository_owner }}/demoBCPDev
+          repository: "${{ github.repository_owner }}/demoBCPDev"
           path: central-repo
-          token: ${{ secrets.PAT_FROM_CENTRAL_REPO }}
+          token: "${{ secrets.PAT_FROM_CENTRAL_REPO }}"
 
       - name: Paso 1
         run: echo "Hola desde el paso 1"
