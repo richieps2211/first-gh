@@ -29,6 +29,16 @@ jobs:
           echo "BANCO=banco" >> $GITHUB_ENV
           echo "PAIS=peru" >> $GITHUB_ENV
 
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Paso 1 en Workflow Hijo
+        run: |
+          echo "Hola desde el paso 1 en Workflow Hijo"
+          echo "BANCO: ${{ needs.job1.outputs.BANCO }}"
+          echo "PAIS: ${{ needs.job1.outputs.PAIS }}"
+
       - name: Invocar Workflow Hijo
         uses: actions/checkout@v2
         with:
