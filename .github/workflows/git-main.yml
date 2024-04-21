@@ -20,7 +20,7 @@ jobs:
       - name: Obtener PAT del Repositorio Central
         uses: actions/checkout@v2
         with:
-          repository: demoBCPDev
+          repository: ${{ github.repository_owner }}/demoBCPDev
           path: central-repo
           token: ${{ secrets.PAT_FROM_CENTRAL_REPO }}
 
