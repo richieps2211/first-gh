@@ -1,7 +1,9 @@
 name: Workflow Hijo
 
 on:
-  repository_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   job2:
@@ -9,6 +11,6 @@ jobs:
     steps:
       - name: Paso 1 en Workflow Hijo
         run: |
-          echo "ESTE ES EL WORKFLOW DE GIT HUB HIJO"
-          echo "BANCO: ${{ github.event.inputs.banco }}"
-          echo "PAIS: ${{ github.event.inputs.pais }}"
+          echo "Hola desde el paso 1 en Workflow Hijo"
+          echo "BANCO: $BANCO"
+          echo "PAIS: $PAIS"
