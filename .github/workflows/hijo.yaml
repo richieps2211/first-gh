@@ -2,6 +2,7 @@ name: Workflow Hijo
 
 on:
   repository_dispatch:
+    types: [job2]
 
 jobs:
   job2:
@@ -10,5 +11,5 @@ jobs:
       - name: Paso 1 en Workflow Hijo
         run: |
           echo "Hola desde el paso 1 en Workflow Hijo"
-          echo "BANCO: $BANCO"
-          echo "PAIS: $PAIS"
+          echo "BANCO: ${{ github.event.client_payload.BANCO }}"
+          echo "PAIS: ${{ github.event.client_payload.PAIS }}"
