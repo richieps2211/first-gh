@@ -29,16 +29,6 @@ jobs:
           echo "BANCO=${{ job.outputs.BANCO }}" >> $GITHUB_ENV
           echo "PAIS=${{ job.outputs.PAIS }}" >> $GITHUB_ENV
 
-  job2:
-    needs: [job1]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Paso 1 en Workflow Hijo
-        run: |
-          echo "Hola desde el paso 1 en Workflow Hijo"
-          echo "BANCO: ${{ needs.job1.outputs.BANCO }}"
-          echo "PAIS: ${{ needs.job1.outputs.PAIS }}"
-
       - name: Invocar Workflow Hijo
         uses: actions/checkout@v2
         with:
@@ -53,4 +43,4 @@ jobs:
           token: "${{ secrets.PAT }}"
           repository: "${{ github.repository_owner }}/first-gh"
           event-type: repository_dispatch
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2" }'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2", "BANCO": "${{ job.outputs.BANCO }}", "PAIS": "${{ job.outputs.PAIS }}" }'
