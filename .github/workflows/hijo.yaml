@@ -1,4 +1,4 @@
-name: hijo
+name: Hijo
 
 on:
   repository_dispatch:
@@ -7,8 +7,8 @@ on:
       ref:
         description: 'Branch a ejecutar'
         required: true
-      sha:
-        description: 'SHA del commit'
+      job-id:
+        description: 'ID del job a ejecutar'
         required: true
 
 jobs:
@@ -17,7 +17,8 @@ jobs:
     steps:
       - name: Paso 1 en Workflow Hijo
         run: echo "Hola desde el paso 1 en Workflow Hijo"
+  job2:
+    runs-on: ubuntu-latest
+    steps:
       - name: Paso 2 en Workflow Hijo
-        run: |
-          echo "Ref recibida: ${{ github.event.client_payload.ref }}"
-          echo "SHA recibido: ${{ github.event.client_payload.sha }}"
+        run: echo "Hola desde el paso 2 en Workflow Hijo"
