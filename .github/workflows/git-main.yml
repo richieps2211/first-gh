@@ -26,4 +26,4 @@ jobs:
         with:
           token: ${{ secrets.PAT }}  # Asegúrate de tener un PAT con los permisos necesarios
           repository: ${{ github.repository_owner }}/first-gh
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2" }'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
