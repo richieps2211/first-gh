@@ -17,17 +17,11 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      BANCO: ${{ steps.set_output.outputs.BANCO }}
-      PAIS: ${{ steps.set_output.outputs.PAIS }}
+      BANCO: 'BCP'
+      PAIS: 'bolivia'
     steps:
       - name: Paso 1
         run: echo "Hola desde el paso 1"
-
-      - name: Set Output
-        id: set_output
-        run: |
-          echo "BANCO=banco" >> $GITHUB_ENV
-          echo "PAIS=peru" >> $GITHUB_ENV
 
   job2:
     needs: job1
