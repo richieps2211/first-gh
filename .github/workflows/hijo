@@ -1,4 +1,4 @@
-name: Hijo
+name: hijo
 
 on:
   repository_dispatch:
