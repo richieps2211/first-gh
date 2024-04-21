@@ -1,9 +1,7 @@
 name: Workflow Hijo
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
 
 jobs:
   job2:
