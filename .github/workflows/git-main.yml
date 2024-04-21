@@ -27,19 +27,13 @@ jobs:
       - name: Paso 1
         run: echo "Hola desde el paso 1"
 
-      - name: Imprimir Token
-        run: echo "Token: ${{ github.token }}"
-
-      - name: Verificar Permisos
-        run: curl -H "Authorization: token ${{ github.token }}" -X GET https://api.github.com/repos/${{ github.repository }}/actions/runners/permissions
-
       - name: Invocar Workflow Hijo
         uses: actions/checkout@v2
         
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: "${{ github.token }}"  # Utiliza el token heredado
+          token: "${{ secrets.PAT }}"  # Utiliza el token heredado
           repository: "${{ github.repository_owner }}/first-gh"
           event-type: workflow_dispatch
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "job-id": "job2" }'
